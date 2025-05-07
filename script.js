@@ -1,1 +1,1 @@
-console.log("Hello, World!");
+fetch("https://api.escuelajs.co/api/v1/categories")
