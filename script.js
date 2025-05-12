@@ -1,19 +1,20 @@
-fetch("https://api.escuelajs.co/api/v1/categories")
+fetch("https://myfakeapi.com/api/cars/")
         .then(response => response.json())
-        .then(items => {
+        .then(cars => {
           const container = document.getElementById('content');
-          
-          items.forEach(item => {
+          cars.forEach(car => {
             const itemDiv = document.createElement('div');
             itemDiv.className = 'item'; // Optional: Add CSS class
             itemDiv.innerHTML = `
-              <h3>${item.name}</h3>
-              <p>${item.price}</p>
-              <img src="${item.image}" alt="${item.name}" style="width: 100px; height: 100px;" />
+              <h3>${car.car}</h3>
+                <p>${car.model}</p>
+                <p>${car.price}</p>
+                <p>${car.car_color}</p>
+            
             `;
             container.appendChild(itemDiv);
 
-            console.log(item);
+            console.log(car);
             
           });
         })
