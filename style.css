@@ -14,7 +14,7 @@
 }
 
 .locked{
-    background-color: #f0f0f0;
+    background-color :black;
     padding: 20px;
     border-radius: 5px;
     display: flex;
@@ -26,6 +26,10 @@
     height: 100px;
     width: 30%;
     margin-left: 10px;
+}
+.locked img{
+    width: 80px;
+    height: 80px;
 }
 #content{
     display: flex;

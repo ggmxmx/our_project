@@ -7,9 +7,9 @@ fetch("https://rickandmortyapi.com/api/character")
             itemDiv.className = 'item'; // Optional: Add CSS class
             itemDiv.innerHTML = `
                <h3>${character.name}</h3>
-        <p>Status: ${character.status}</p>
-        <p>Species: ${character.species}</p>
-        <p>Gender: ${character.gender}</p>
+        <p>Status:<br> ${character.status}</p>
+        <p>Species:<br> ${character.species}</p>
+        <p>Gender:<br> ${character.gender}</p>
         <img src="${character.image}" alt="${character.name}" />
             `;
             container.appendChild(itemDiv);
@@ -17,10 +17,17 @@ fetch("https://rickandmortyapi.com/api/character")
             console.log("hello")
             console.log(character);
             
+            if (character.species === "Human") {
+                itemDiv.className = 'locked';
+            }
           });
+
+          
         })
         .catch((error) => {
             console.log("Error fetching categories:", error);
         });
             
+
+
     
