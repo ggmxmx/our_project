@@ -22,6 +22,7 @@ fetch("https://rickandmortyapi.com/api/character")
       // Get the button that's actually in the DOM
       const ownButton = itemDiv.querySelector('.own-button');
       
+      
       ownButton.addEventListener('click', () => {
         const isOwned = itemDiv.classList.contains('owned');
         if (isOwned) {
@@ -32,6 +33,7 @@ fetch("https://rickandmortyapi.com/api/character")
           ownButton.innerText = "Unown";
         }
       });
+      
 
       if (character.species === "Human") {
         itemDiv.classList.add('locked');

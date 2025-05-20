@@ -57,7 +57,6 @@ body{
     padding: 20px;
     display: flex;
     flex-direction: column;
-
 }
 img{
     width: 400px;
@@ -81,4 +80,20 @@ img{
     border-radius: 10px;
     border: 1px solid #ccc;
     margin-bottom: 20px;
+    height: 50px;
+}
+
+.pfp{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    align-items: space-between;
+    justify-content: space-between;
 }
