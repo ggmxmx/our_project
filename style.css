@@ -1,35 +1,41 @@
 .item{
     background-color: #f0f0f0;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 15px;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    
     justify-content: space-between;
     padding: 10px;
     margin-bottom: 10px;
-    height: 100px;
-    width: 30%;
+    height: 200px;
+    width: 47%;
     margin-left: 10px;
 }
 
 .locked{
     background-color :black;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 15px;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    
     justify-content: space-between;
     padding: 10px;
     margin-bottom: 10px;
-    height: 100px;
-    width: 30%;
+    height: 200px;
+    width: 47%;
     margin-left: 10px;
 }
 .locked img{
-    width: 80px;
-    height: 80px;
+    width: 150px;
+    height: 150px;
+}
+.locked h3{
+    color: white;
+}
+.locked p{
+    color: white;
 }
 #content{
     display: flex;
@@ -39,8 +45,8 @@
 }
 
 .item img{
-    width: 80px;
-    height: 80px;
+    width: 150px;
+    height: 150px;
     
 }
 
@@ -50,10 +56,29 @@ body{
     color: #333;
     padding: 20px;
     display: flex;
+    flex-direction: column;
 
 }
 img{
     width: 400px;
     border-radius: 10px;
     height: auto;
+}
+
+.own-button{
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#search{
+   
+    width: auto;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
 }
