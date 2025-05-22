@@ -1,10 +1,20 @@
+let ownedCharacters = [];
+
 fetch("https://rickandmortyapi.com/api/character")
   .then(response => response.json())
   .then(data => {
     const container = document.getElementById('content');
-    data.results.forEach(character => {
+    // Initialize all characters with isOwned property
+    const allCharacters = data.results.map(character => ({
+      ...character,
+      isOwned: false
+    }));
+    
+    // This will track our owned characters
+    
+    allCharacters.forEach(character => {
       const itemDiv = document.createElement('div');
-      itemDiv.className = 'item'; // Optional: Add CSS class
+      itemDiv.className = 'item';
       
       itemDiv.innerHTML = `
         <button class="own-button">Own</button>
@@ -19,22 +29,26 @@ fetch("https://rickandmortyapi.com/api/character")
       
       container.appendChild(itemDiv);
       
-      // Get the button that's actually in the DOM
       const ownButton = itemDiv.querySelector('.own-button');
       
-      
       ownButton.addEventListener('click', () => {
-        const isOwned = itemDiv.classList.contains('owned');
-        if (isOwned) {
-          itemDiv.classList.remove('owned');
-          ownButton.innerText = "Own";
-        } else {
+        // Toggle ownership
+        character.isOwned = !character.isOwned;
+        
+        // Update UI
+        if (character.isOwned) {
           itemDiv.classList.add('owned');
           ownButton.innerText = "Unown";
+        } else {
+          itemDiv.classList.remove('owned');
+          ownButton.innerText = "Own";
         }
+        
+        // Update ownedCharacters list
+        ownedCharacters = allCharacters.filter(c => c.isOwned);
+        console.log("Owned Characters:", ownedCharacters);
       });
       
-
       if (character.species === "Human") {
         itemDiv.classList.add('locked');
         ownButton.remove();
@@ -44,3 +58,5 @@ fetch("https://rickandmortyapi.com/api/character")
   .catch((error) => {
     console.log("Error fetching categories:", error);
   });
+
+  export { ownedCharacters };
