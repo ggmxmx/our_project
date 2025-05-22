@@ -6,7 +6,7 @@ import { ownedCharacters } from './script.js';
 
     ownedCharacters.forEach(character => {
         const itemDiv = document.createElement('div');
-            const ownButton = itemDiv.querySelector('.own-button');
+           
 
         itemDiv.className = 'item';
         itemDiv.innerHTML = `
@@ -21,7 +21,8 @@ import { ownedCharacters } from './script.js';
                 `
                document.body.appendChild(itemDiv); 
     });
-
+     const ownButton = itemDiv.querySelector('.own-button');
+     
     ownButton.addEventListener('click', () => {
         
         character.isOwned = !character.isOwned;
