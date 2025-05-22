@@ -30,16 +30,16 @@ fetch("https://rickandmortyapi.com/api/character")
       
       const ownButton = itemDiv.querySelector('.own-button');
       
-      // Highlight owned characters on load
+      
       if (character.isOwned) {
         itemDiv.classList.add('owned');
       }
       
       ownButton.addEventListener('click', () => {
-        // Toggle ownership
+        
         character.isOwned = !character.isOwned;
         
-        // Update UI
+       
         if (character.isOwned) {
           itemDiv.classList.add('owned');
           ownButton.innerText = "Unown";
