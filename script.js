@@ -1,12 +1,12 @@
 export let ownedCharacters = JSON.parse(localStorage.getItem('ownedCharacters')) || [];
-
+export let allCharacters = [];
 fetch("https://rickandmortyapi.com/api/character")
   .then(response => response.json())
   .then(data => {
     const container = document.getElementById('content');
     
     // Initialize all characters with isOwned property (check if already owned)
-    const allCharacters = data.results.map(character => ({
+      allCharacters = data.results.map(character => ({
       ...character,
       isOwned: ownedCharacters.some(c => c.id === character.id) // Restore ownership state
     }));
@@ -66,3 +66,4 @@ fetch("https://rickandmortyapi.com/api/character")
   .catch((error) => {
     console.log("Error fetching characters:", error);
   });
+

@@ -1,9 +1,9 @@
 import { ownedCharacters } from './script.js';
-
+import { allCharacters } from './script.js';
 // Wait for the module to load
 
 	console.log(ownedCharacters);
-
+    
     ownedCharacters.forEach(character => {
         const itemDiv = document.createElement('div');
            
@@ -20,27 +20,27 @@ import { ownedCharacters } from './script.js';
         <img src="${character.image}" alt="${character.name}" />
                 `
                document.body.appendChild(itemDiv); 
-    });
-     const ownButton = itemDiv.querySelector('.own-button');
-     
+
+               const ownButton = itemDiv.querySelector('.own-button');
+
+      if (character.isOwned) {
+        itemDiv.classList.add('owned');
+      }
+
     ownButton.addEventListener('click', () => {
         
-        character.isOwned = !character.isOwned;
+        character.isOwned = false
+
+
+        const updatedOwnedCharacters = allCharacters.filter(c => c.isOwned);
         
-       
-        if (character.isOwned) {
-          itemDiv.classList.add('owned');
-          ownButton.innerText = "Unown";
-        } else {
-          itemDiv.classList.remove('owned');
-          ownButton.innerText = "Own";
-        }
-        
-        // Update ownedCharacters list
-        ownedCharacters = allCharacters.filter(c => c.isOwned);
-        
-        // Save to localStorage
-        localStorage.setItem('ownedCharacters', JSON.stringify(ownedCharacters));
+        localStorage.setItem('ownedCharacters', JSON.stringify(updatedOwnedCharacters));
         
         console.log("Owned Characters:", ownedCharacters);
       });
+
+    });
+
+    
+      
+     
