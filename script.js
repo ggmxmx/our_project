@@ -1,23 +1,22 @@
-let ownedCharacters = [];
+export let ownedCharacters = JSON.parse(localStorage.getItem('ownedCharacters')) || [];
 
 fetch("https://rickandmortyapi.com/api/character")
   .then(response => response.json())
   .then(data => {
     const container = document.getElementById('content');
-    // Initialize all characters with isOwned property
+    
+    // Initialize all characters with isOwned property (check if already owned)
     const allCharacters = data.results.map(character => ({
       ...character,
-      isOwned: false
+      isOwned: ownedCharacters.some(c => c.id === character.id) // Restore ownership state
     }));
-    
-    // This will track our owned characters
     
     allCharacters.forEach(character => {
       const itemDiv = document.createElement('div');
       itemDiv.className = 'item';
       
       itemDiv.innerHTML = `
-        <button class="own-button">Own</button>
+        <button class="own-button">${character.isOwned ? "Unown" : "Own"}</button>
         <div>
           <h3>${character.name}</h3>
           <p>Status: ${character.status}</p>
@@ -30,6 +29,11 @@ fetch("https://rickandmortyapi.com/api/character")
       container.appendChild(itemDiv);
       
       const ownButton = itemDiv.querySelector('.own-button');
+      
+      // Highlight owned characters on load
+      if (character.isOwned) {
+        itemDiv.classList.add('owned');
+      }
       
       ownButton.addEventListener('click', () => {
         // Toggle ownership
@@ -46,6 +50,10 @@ fetch("https://rickandmortyapi.com/api/character")
         
         // Update ownedCharacters list
         ownedCharacters = allCharacters.filter(c => c.isOwned);
+        
+        // Save to localStorage
+        localStorage.setItem('ownedCharacters', JSON.stringify(ownedCharacters));
+        
         console.log("Owned Characters:", ownedCharacters);
       });
       
@@ -56,7 +64,5 @@ fetch("https://rickandmortyapi.com/api/character")
     });
   })
   .catch((error) => {
-    console.log("Error fetching categories:", error);
+    console.log("Error fetching characters:", error);
   });
-
-  export { ownedCharacters };
