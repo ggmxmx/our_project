@@ -43,7 +43,7 @@ function displayCharacters(charactersToDisplay) {
             localStorage.setItem('ownedCharacters', JSON.stringify(ownedCharacters));
         });
         
-        if (character.species === "Human") {
+        if (character.species === "Human" || character.status === "Dead") {
             itemDiv.classList.add('locked');
             ownButton.remove();
         }
