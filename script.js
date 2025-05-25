@@ -51,8 +51,8 @@ function displayCharacters(charactersToDisplay) {
 }
 
 fetch("https://rickandmortyapi.com/api/character")
-    .then(response =>{ response.json()
-    
+    .then(response => response.json())
+    .then(data => {
         
         allCharacters = data.results.map(character => ({
             ...character,
@@ -65,13 +65,11 @@ fetch("https://rickandmortyapi.com/api/character")
         searchInput.addEventListener('input', (event) => {
             const searchTerm = event.target.value.toLowerCase();
             const filteredCharacters = allCharacters.filter(character =>
-                character.name.toLowerCase().includes(searchTerm) ||
-                character.species.toLowerCase().includes(searchTerm) ||
-                character.status.toLowerCase().includes(searchTerm) 
+                character.name.toLowerCase().includes(searchTerm)
             );
             displayCharacters(filteredCharacters);
         });
-})
+    })
     .catch((error) => {
         console.log("Error fetching characters:", error);
     });
